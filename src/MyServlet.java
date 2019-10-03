@@ -41,7 +41,7 @@ public class MyServlet extends HttpServlet {
                 "  </head>\n" +
                 "  <body>\n" +
                 "<p>Вы выбрали книгу по изучению " + lang + " по цене " + price + "</p>" +
-                "<a href='http://localhost:8081/Lesson2_war_exploded/'>НАЗАД</a>");
+                "<a href='http://localhost:8081/Lesson2_war_exploded/'>Назад</a>");
     }
 
     @Override
