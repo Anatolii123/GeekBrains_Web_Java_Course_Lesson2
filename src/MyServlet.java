@@ -41,13 +41,31 @@ public class MyServlet extends HttpServlet {
                 "  </head>\n" +
                 "  <body>\n" +
                 "<p>Вы выбрали книгу по изучению " + lang + " по цене " + price + "</p>" +
-                "<a href='http://localhost:8081/Lesson2_war_exploded/'>Назад</a>");
+                "<a href='http://localhost:8081/Lesson2_war_exploded/'>Назад</a>" +
+                "  </body>\n" +
+                "</html>");
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.getWriter().append("Served at: ").append(request.getContextPath());
+        Cookie cookies[] = request.getCookies();
+        response.setCharacterEncoding("utf-8");
+        request.setCharacterEncoding("utf-8");
+        response.setContentType("text/html;charset=utf-8");
+        PrintWriter out = response.getWriter();
+        out.write("<!DOCTYPE html>\n" +
+                "<html>\n" +
+                "  <head>\n" +
+                "    <meta charset=\"UTF-8\">\n" +
+                "    <title>Insert title here</title>\n" +
+                "  </head>\n" +
+                "  <body>\n" +
+                "<p>Список книг, которые вы выбрали:" + "</p>");
+        for (int i = 0; i < cookies.length; i++) {
+            out.write("<p>" + cookies[i].getName()  + " | " + cookies[i].getValue() + "</p>");
+        }
+        out.write("  </body>\n" +
+                "</html>");
+        out.close();
     }
-
-
 }
